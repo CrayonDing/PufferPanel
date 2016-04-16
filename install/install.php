@@ -25,7 +25,7 @@ parse_str(implode('&', array_splice($argv, 1)), $params);
 define("BASE_DIR", __DIR__ . '/../');
 
 if (empty($params)) {
-	echo "You failed to read the docs. Go read them again\n";
+	echo "请重新阅读docs文档\n";
 	return;
 }
 
@@ -45,7 +45,7 @@ try {
 
 	$fp = fopen(BASE_DIR . 'config.json', 'w');
 	if ($fp === false) {
-		throw new \Exception('Could not open config.json');
+		throw new \Exception(' 不能打开 config.json');
 	}
 
 	fwrite($fp, json_encode(array(
@@ -67,7 +67,7 @@ try {
 	fclose($fp);
 
 	if (!file_exists(BASE_DIR . 'config.json')) {
-		throw new \Exception("Could not create config.json");
+		throw new \Exception("不能创建 config.json");
 	}
 
 	$mysql = new PDO('mysql:host=' . $params['host'] . ';port=' . $params['port'], $params['user'], $params['pass'], array(
